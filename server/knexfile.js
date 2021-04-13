@@ -6,7 +6,7 @@ module.exports = {
     client: 'sqlite3',
     useNullAsDefault: true,
     connection: {
-      filename: './data/macroCalc.db3'
+      filename: './data/cryptogamedb.db3'
     },
     migrations: {
       directory: './data/migrations',
