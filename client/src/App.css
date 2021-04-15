@@ -4,10 +4,16 @@
 }
 
 .sidebar {
-  width: 20%;
+  display: flex;
+  justify-content: center;
+  width: 10%;
   border: 2px solid red;
 }
+.sidebutton {
+  font-weight: 500;
+  font-size: 1.5rem;
+}
 .main {
-  width: 80%;
+  width: 90%;
   border: 2px solid blue;
 }

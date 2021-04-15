@@ -3,7 +3,7 @@ import React from 'react';
 function Sidebar(){
     return(
         <section className='sidebar'>
-            <h2>This should have less of the screen</h2>
+            <h1 className='sidebutton'>Game</h1>
         </section>
     )
 }
