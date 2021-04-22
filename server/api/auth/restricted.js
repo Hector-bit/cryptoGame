@@ -13,7 +13,7 @@ module.exports = (req, res, next) => {
       } else {
         req.decodedJwt = decodedToken;
         req.user = decodedToken.user; 
-        console.log('dcoded token', decodedToken)
+        console.log('decoded token', decodedToken)
         next();
       }
     });
