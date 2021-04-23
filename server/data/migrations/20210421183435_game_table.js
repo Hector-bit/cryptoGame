@@ -3,17 +3,21 @@ exports.up = function(knex) {
   return knex.schema.createTable('game_table', tbl => {
       tbl.increments();
       tbl
-      .string('username')
+      .string('game_name')
       .notNullable()
       .unique();
       tbl
-        .string('username')
-        .notNullable()
-        .unique();
-  })
+      .integer('dollars');
+      tbl
+      .integer('bitcoin');
+      tbl
+      .integer('litecoin');
+      tbl
+      .integer('dogecoin');
+  });
 };
 
 exports.down = function(knex) {
   return knex.schema
     .dropTableIfExists('game_table')
-};
+}; 
