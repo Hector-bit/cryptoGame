@@ -10,27 +10,27 @@ module.exports = {
 
 };
 
-function add(daily_meals, info_id) {
+function add(game_table, info_id) {
     
-    return db('daily_meals')
-    .insert(daily_meals)
+    return db('game_table')
+    .insert(game_table)
     .then(inserted => {
        return findByInfoID(info_id)
     })
 }
 
 function find() {
-    return db('daily_meals')
+    return db('game_table')
 }
 
 function findById(id) {
-    return db('daily_meals')
+    return db('game_table')
     .where({ id })
     .first();
 }
 
 function findByInfoID(info_id) {
-    return db('daily_meals')
+    return db('game_table')
     .where({ info_id })
     // .map(dailymeals => {
     //     dailymeals.meals = JSON.parse(dailymeals.meals)
@@ -39,7 +39,7 @@ function findByInfoID(info_id) {
 }
 
 function removeForInfoId(info_id) {
-    return db('daily_meals')
+    return db('game_table')
     .where({ info_id })
     .del()
 }
