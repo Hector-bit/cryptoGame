@@ -1,6 +1,6 @@
 const express = require('express');
 const Info = require('./user-model');
-const DailyMeals = require('./daily-meals-model');
+const DailyMeals = require('./game-table-model');
 const restricted = require('../auth/restricted');
 const { validateDailyMeals, stringifyMeals, addInfoIdToMeals }  = require('./user-middleware');
 
@@ -54,7 +54,8 @@ router.get('/:id', restricted, (req, res) => {
         })
 })
 
-router.get('/:id/dailymeals', (req, res) => {
+//should get gametable info
+router.get('/:id/gametable', (req, res) => {
     const id = req.params.id;
 
     DailyMeals.findByInfoID(id)
@@ -62,19 +63,20 @@ router.get('/:id/dailymeals', (req, res) => {
             if(dailymeals) {
                 res.status(200).json(dailymeals)
             } else {
-                res.status(404).json({ error: 'The daily meal with this ID does not exist'})
+                res.status(404).json({ error: 'hopefully this is now searching for the game table but if your seeing this then you fucked up'})
             }
         })
         .catch(err =>{
-            res.status(500).json({ error: 'Unable to get daily meals from the database'})
+            res.status(500).json({ error: 'get the fuck outta here, either you fucked up or the server aint workin'})
         })
 })
 
+//posts the user info, probably won't need
 router.post('/', restricted, (req, res) => {
     const { user_id, gender, birthdate_day, birthdate_month, birthdate_year, height, weight, activity_factor, meals_per_day, snacks_per_day, goal_multiplier } = req.body;
     req.body.user_id = req.user.id;
 
-    console.log('user id', req.user.id)
+    console.log('not sure if req.user.id will show anything but imma leave this console.log at 77 from user-router.js', req.user.id)
 
     if(!gender || !birthdate_day || !birthdate_month || !birthdate_year || !height || !weight || !activity_factor || !(meals_per_day >= 0) || !(snacks_per_day >= 0) || !goal_multiplier) {
         res.status(400).json({ error: 'Please provide the proper body with the request'})
@@ -91,7 +93,8 @@ router.post('/', restricted, (req, res) => {
     }
 })
 
-router.post('/:id/dailymeals', validateDailyMeals, addInfoIdToMeals, stringifyMeals, (req, res) => {
+//changed this to post a new game table
+router.post('/:id/gametable', (req, res) => {
 
         DailyMeals.removeForInfoId(req.params.id)
             .then(success => {
@@ -111,6 +114,7 @@ router.post('/:id/dailymeals', validateDailyMeals, addInfoIdToMeals, stringifyMe
             })
 })
 
+//suppose to update users information
 router.put('/:id', restricted, (req, res) => {
     const id = req.params.id;
     const { user_id, gender, birthdate_day, birthdate_month, birthdate_year, height, weight, activity_factor, meals_per_day, snacks_per_day, goal_multiplier } = req.body;
@@ -128,8 +132,21 @@ router.put('/:id', restricted, (req, res) => {
     }
 })
 
-router.put('/:id/dailymeals', (req, res) => {
-    
+//updates the game table stuff
+router.put('/:id/gametable', restricted, (req, res) => {
+    const id = req.params.id;
+
+    if(!id){
+        res.status(400).json({ error: 'you did not provide a valid user id'})
+    } else {
+        DailyMeals.updateTable(id, req.body)
+            .then(saved => {
+                res.status(201).json(saved)
+            })
+            .catch(err => {
+                res.status(500).json({ error: 'Unable to PUT this table... sorry'})
+            })
+    }
 })
 
 router.delete('/:id', restricted, (req, res) => {

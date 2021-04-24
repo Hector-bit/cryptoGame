@@ -6,16 +6,16 @@ module.exports = {
     find,
     findById,
     findByInfoID,
+    updateTable,
     removeForInfoId
-
 };
 
-function add(game_table, info_id) {
+function add(game_table, gamer_id) {
     
     return db('game_table')
     .insert(game_table)
     .then(inserted => {
-       return findByInfoID(info_id)
+       return findByInfoID(gamer_id)
     })
 }
 
@@ -29,17 +29,26 @@ function findById(id) {
     .first();
 }
 
-function findByInfoID(info_id) {
+function findByInfoID(gamer_id) {
     return db('game_table')
-    .where({ info_id })
+    .where({ gamer_id })
     // .map(dailymeals => {
     //     dailymeals.meals = JSON.parse(dailymeals.meals)
     //     return dailymeals
     // })
 }
 
-function removeForInfoId(info_id) {
+function updateTable(gamer_id, changes) {
     return db('game_table')
-    .where({ info_id })
+    .where({ gamer_id })
+    .update(changes)
+    .then(res => {
+        return findById(gamer_id)
+    })
+}
+
+function removeForInfoId(gamer_id) {
+    return db('game_table')
+    .where({ gamer_id })
     .del()
 }
