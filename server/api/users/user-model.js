@@ -11,7 +11,7 @@ module.exports = {
 };
 
 function add(info) {
-    return db('info')
+    return db('gamers')
     .insert(info, 'id')
     .then(id => {
         return findById(id[0])
@@ -19,26 +19,26 @@ function add(info) {
 }
 
 function find() {
-    return db('info')
+    return db('gamers')
 }
 
 function findById(id) {
-    return db('info')
-    .select('id', 'user_id', 'birthdate_day', 'birthdate_month', 'birthdate_year', 'gender', 'height', 'weight', 'activity_factor', 'meals_per_day', 'snacks_per_day', 'goal_multiplier')
+    return db('gamers')
+    .select('id', 'username')
     .where({ id })
     .first();
 }
 
 function findByUserID(user_id) {
-    return db('info')
-    .select('id', 'user_id', 'birthdate_day', 'birthdate_month', 'birthdate_year', 'gender','height', 'weight', 'activity_factor', 'meals_per_day', 'snacks_per_day', 'goal_multiplier')
+    return db('gamers')
+    .select('id', 'username')
     .where({ user_id })
     .first();
 }
 
 
 function update(id, changes) {
-    return db('info')
+    return db('gamers')
         .where({ id })
         .update(changes)
         .then(res => {
@@ -47,7 +47,7 @@ function update(id, changes) {
 }
 
 function remove(id) {
-    return db('info')
+    return db('gamers')
     .where({ id })
     .del();
 }
