@@ -6,6 +6,7 @@ const { validateDailyMeals, stringifyMeals, addInfoIdToMeals }  = require('./use
 
 const router = express.Router();
 
+//gets users along with crypted passwords
 router.get('/all', (req, res) => {
     Info.find()
         .then(success => {
@@ -16,6 +17,7 @@ router.get('/all', (req, res) => {
         })
 })
 
+//suppose to get a single user idk how
 router.get('/', restricted, (req, res) => {
     req.body.user_id = req.user.id;
 
@@ -57,8 +59,9 @@ router.get('/:id', restricted, (req, res) => {
 //should get gametable info
 router.get('/:id/gametable', (req, res) => {
     const id = req.params.id;
-
+    console.log('hello do these work?', req)
     DailyMeals.findByInfoID(id)
+    console.log('here is id: ', id)
         .then(dailymeals => {
             if(dailymeals) {
                 res.status(200).json(dailymeals)
@@ -93,12 +96,12 @@ router.post('/', restricted, (req, res) => {
     }
 })
 
-//changed this to post a new game table
-router.post('/:id/gametable', (req, res) => {
-
-        DailyMeals.removeForInfoId(req.params.id)
+//changed this to add a game table
+router.post('/:id/gametable', restricted, (req, res) => {
+        const id = req.params.id;
+        DailyMeals.add(req.body, req.params.id)
             .then(success => {
-                DailyMeals.add(req.body, req.params.id)
+                DailyMeals.add(req.body, id)
                     .then(saved => {
                         console.log(saved)
                         res.status(201).json(saved)
@@ -111,7 +114,7 @@ router.post('/:id/gametable', (req, res) => {
             .catch(err => {
                 console.log('500', err)
                 res.status(500).json({ error: 'Internal server error'})
-            })
+            }) 
 })
 
 //suppose to update users information
