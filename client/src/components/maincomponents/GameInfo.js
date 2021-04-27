@@ -23,7 +23,7 @@ export default function GameInfo(props) {
         <div>
           <TextField
             id="standard-full-width"
-            label="Label"
+            label="Game Name"
             style={{ margin: 8 }}
             placeholder="Placeholder"
             helperText="Full width!"
@@ -33,96 +33,18 @@ export default function GameInfo(props) {
               shrink: true,
             }}
           />
-          <TextField
-            label="None"
-            id="margin-none"
-            defaultValue="Default Value"
-            className={classes.textField}
-            helperText="Some important text"
-          />
-          <TextField
-            label="Dense"
-            id="margin-dense"
-            defaultValue="Default Value"
-            className={classes.textField}
-            helperText="Some important text"
-            margin="dense"
-          />
-          <TextField
-            label="Normal"
-            id="margin-normal"
-            defaultValue="Default Value"
-            className={classes.textField}
-            helperText="Some important text"
-            margin="normal"
-          />
-        </div>
-        <div>
-          <TextField
-            id="filled-full-width"
-            label="Label"
-            style={{ margin: 8 }}
-            placeholder="Placeholder"
-            helperText="Full width!"
-            fullWidth
-            margin="normal"
-            InputLabelProps={{
-              shrink: true,
-            }}
-            variant="filled"
-          />
-          <TextField
-            label="None"
-            id="filled-margin-none"
-            defaultValue="Default Value"
-            className={classes.textField}
-            helperText="Some important text"
-            variant="filled"
-          />
-          <TextField
-            label="Dense"
+            <TextField
+            label="Dollar starting amount"
             id="filled-margin-dense"
             defaultValue="Default Value"
             className={classes.textField}
             helperText="Some important text"
             margin="dense"
-            variant="filled"
-          />
-          <TextField
-            label="Normal"
-            id="filled-margin-normal"
-            defaultValue="Default Value"
-            className={classes.textField}
-            helperText="Some important text"
-            margin="normal"
-            variant="filled"
-          />
-        </div>
-        <div>
-          <TextField
-            id="outlined-full-width"
-            label="Label"
-            style={{ margin: 8 }}
-            placeholder="Placeholder"
-            helperText="Full width!"
-            fullWidth
-            margin="normal"
-            InputLabelProps={{
-              shrink: true,
-            }}
             variant="outlined"
           />
           <TextField
-            label="None"
-            id="outlined-margin-none"
-            defaultValue="Default Value"
-            className={classes.textField}
-            helperText="Some important text"
-            variant="outlined"
-          />
-          <TextField
-            label="Dense"
-            id="outlined-margin-dense"
+            label="Bitcoin starting amount"
+            id="filled-margin-dense"
             defaultValue="Default Value"
             className={classes.textField}
             helperText="Some important text"
@@ -130,12 +52,22 @@ export default function GameInfo(props) {
             variant="outlined"
           />
           <TextField
-            label="Normal"
-            id="outlined-margin-normal"
+            label="Litecoin starting amount"
+            id="outlined-margin-none"
             defaultValue="Default Value"
             className={classes.textField}
             helperText="Some important text"
-            margin="normal"
+            // margin="normal"
+            variant="outlined"
+          />
+        </div>
+        <div>
+          <TextField
+            label="Dogecoin starting amount"
+            id="outlined-margin-none"
+            defaultValue="Default Value"
+            className={classes.textField}
+            helperText="Some important text"
             variant="outlined"
           />
         </div>

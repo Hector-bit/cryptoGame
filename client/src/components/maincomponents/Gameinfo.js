@@ -1,0 +1,1 @@
+//here info will be displayed if there is an active game
