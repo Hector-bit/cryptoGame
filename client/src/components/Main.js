@@ -1,5 +1,5 @@
 import React from 'react';
-import Game from './maincomponents/Game';
+import Game from './gamecomponents/Game';
 
 function Main(){
     return(
