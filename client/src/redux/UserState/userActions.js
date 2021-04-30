@@ -16,7 +16,7 @@ export const GET_USER_FAILED = "GET_USER_FAILED"
 export const login = (userInfo,history) => dispatch => {
     dispatch({type: LOGIN_START});
     axios
-        .post("https://localhost:3000/auth/login",userInfo)
+        .post("https://localhost:8000/auth/login",userInfo)
         .then(res=>{
             localStorage.setItem("token",res.data.token)
             dispatch({type:LOGIN_SUCCESS , payload: res.data})
@@ -28,10 +28,11 @@ export const login = (userInfo,history) => dispatch => {
 export const signUp = (userInfo,history) => dispatch => {
     dispatch({type: SIGN_UP_START});
     axios
-        .post("https://localhost:3000/auth/register", userInfo)
+        .post("https://localhost:8000/auth/register", userInfo)
         .then(res=>{
             localStorage.setItem("token",res.data.token)
             dispatch({type: SIGN_UP_SUCCESS, payload: res.data})
-            history.push("/WelcomePage")
+            history.push("/")
         })
         .catch((err)=>dispatch({type: SIGN_UP_FAILED , payload: err.message}))
+}
