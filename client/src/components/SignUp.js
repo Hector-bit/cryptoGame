@@ -3,7 +3,7 @@ import React,{ useState } from 'react';
 import {Link} from 'react-router-dom';
 import { connect } from "react-redux"
 import { signUp } from "../redux/UserState/userActions"
-import Header from './Header';
+// import Header from './Header';
 
 const SignUp = ({signUp , history}) => {
     const [formValues,setFormValues] = useState({username: "" , password: "" , fullname: ""})
@@ -19,7 +19,7 @@ const SignUp = ({signUp , history}) => {
 
     return (
         <>
-        <Header />
+        {/* <Header /> */}
         <SignUpContainer>
         <div className= 'login'>
             

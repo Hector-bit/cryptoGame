@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom';
 import { connect } from "react-redux";
 import { login } from "../redux/UserState/userActions";
 // import styled from 'styled-components';
-import Header from './Header';
+// import Header from './Header';
 
 const Login = ({login,history,error}) => {
     const [formValues,setFormValues] = useState({username: "" , password: ""})
@@ -32,7 +32,7 @@ const Login = ({login,history,error}) => {
 
     return (
         <>
-        <Header />
+        {/* <Header /> */}
         <LoginContainer className= 'login'>
             <h2>Login </h2> 
             <p>{errorMsg}</p>
