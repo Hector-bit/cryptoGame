@@ -15,8 +15,8 @@ function App() {
     <div className="App">
       <Switch>
         {/* <Route path="/"></Route> */}
-        {/* <Route path = "/Login" component = {Login} />
-        <Route path = "/SignUp" component = {SignUp} /> */}
+        <Route path = "/Login" component = {Login} />
+        <Route path = "/SignUp" component = {SignUp} />
         <Route path= "/" component = {Main} />
       </Switch>
     </div>

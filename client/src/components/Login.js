@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom';
 import { connect } from "react-redux";
 import { login } from "../redux/UserState/userActions";
 // import styled from 'styled-components';
-// import Header from './Header';
+import Header from './Header.js';
 
 const Login = ({login,history,error}) => {
     const [formValues,setFormValues] = useState({username: "" , password: ""})
@@ -32,8 +32,8 @@ const Login = ({login,history,error}) => {
 
     return (
         <>
-        {/* <Header /> */}
-        <LoginContainer className= 'login'>
+        <Header />
+        {/* <LoginContainer className= 'login'> */}
             <h2>Login </h2> 
             <p>{errorMsg}</p>
             <form>
@@ -47,10 +47,10 @@ const Login = ({login,history,error}) => {
             
             <button onClick={onSubmit}>Submit</button>
             <h3>Don't Have An Account Yet?</h3>
-            <MyLink to="/SignUp">
+            {/* <MyLink to="/SignUp"> */}
                 <button>Create Account</button>
-            </MyLink>
-        </LoginContainer>
+            {/* </MyLink> */}
+        {/* </LoginContainer> */}
         </>
     )
 

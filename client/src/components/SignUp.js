@@ -3,7 +3,7 @@ import React,{ useState } from 'react';
 import {Link} from 'react-router-dom';
 import { connect } from "react-redux"
 import { signUp } from "../redux/UserState/userActions"
-// import Header from './Header';
+import Header from './Header';
 
 const SignUp = ({signUp , history}) => {
     const [formValues,setFormValues] = useState({username: "" , password: "" , fullname: ""})
@@ -19,8 +19,8 @@ const SignUp = ({signUp , history}) => {
 
     return (
         <>
-        {/* <Header /> */}
-        <SignUpContainer>
+        <Header />
+        {/* <SignUpContainer> */}
         <div className= 'login'>
             
             <h2>Create Account</h2> 
@@ -38,12 +38,12 @@ const SignUp = ({signUp , history}) => {
             </form>
             <button className='continue' onClick={onSubmit}>Submit</button>
             <h3>Already Have An Account?</h3>
-            <MyLink to="/Login">
+            {/* <MyLink to="/Login"> */}
                 <button className="log">Log In</button>
-            </MyLink>
+            {/* </MyLink> */}
             
         </div>
-        </SignUpContainer>
+        {/* </SignUpContainer> */}
         </>
     )
 
