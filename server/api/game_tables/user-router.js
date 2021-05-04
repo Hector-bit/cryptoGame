@@ -98,7 +98,8 @@ router.post('/', restricted, (req, res) => {
 
 //changed this to add a game table
 router.post('/:id/gametable', restricted, (req, res) => {
-        const id = req.params.id;
+    console.log(req, "LOOK HERE")
+        const id = req.user.id;
         DailyMeals.add(req.body, req.params.id)
             .then(success => {
                 DailyMeals.add(req.body, id)
