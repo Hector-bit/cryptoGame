@@ -10,7 +10,7 @@ import { store , persistor } from './redux/store';
 import { PersistGate } from 'redux-persist/integration/react'
 
 ReactDOM.render(
-  <React.StrictMode>
+  // <React.StrictMode>
     <Router>
       <Provider store={store}>
         <PersistGate persistor={persistor}>
@@ -18,8 +18,8 @@ ReactDOM.render(
         </PersistGate>
       </Provider>
     </Router>
-  </React.StrictMode>,
-   document.getElementById('root')
+  // </React.StrictMode>
+   ,document.getElementById('root')
 );
 
 // If you want to start measuring performance in your app, pass a function
