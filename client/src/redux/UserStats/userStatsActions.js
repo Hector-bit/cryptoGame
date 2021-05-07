@@ -1,6 +1,18 @@
 
 import axiosWithAuth from "../../utils/axiosWithAuth"
 
+export const FETCH_GAME_START = "FETCH_GAME_START";
+export const FETCH_GAME_SUCCESS = "FETCH_GAME_SUCCESS";
+export const FETCH_GAME_FAILED = "FETCH_GAME_FAILED";
+
+export const SEND_GAME_START = "SEND_GAME_START"
+export const SEND_GAME_SUCCESS = "SEND_GAME_SUCCESS"
+export const SEND_GAME_FAILED = "SEND_GAME_FAILED"
+
+export const EDIT_GAME_START = "EDIT_GAME_START"
+export const EDIT_GAME_SUCCESS = "EDIT_GAME_SUCCESS"
+export const EDIT_GAME_FAILED = "EDIT_GAME_FAILED"
+
 export const FETCH_STATS_START = "FETCH_STATS_START"
 export const FETCH_STATS_SUCCESS = "FETCH_STATS_SUCCESS"
 export const FETCH_STATS_FAILED = "FETCH_STATS_FAILED"

@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
+import { connect } from 'readux';
+// import { sendStats } from "../redux/UserStats/userStatsActions";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -14,9 +16,26 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+const initialValues = {
+  game_name: "",
+  dollar: "",
+  bitcoin: "",
+  litecoin: "",
+  dogecoin: ""
+}
+
 export default function GameInfo(props) {
+
   const classes = useStyles();
   console.log("PROPS", props.info);
+
+  const [formValues, setFormValues] = useState(initialValues);
+
+  const submitHandler = (e) => {
+    e.preventDefault();
+    props.sendStats(formValues, props.history)
+  }
+
   if(props.info === true){
     return (
       <div className={classes.root}>
@@ -71,6 +90,7 @@ export default function GameInfo(props) {
             variant="outlined"
           />
         </div>
+        <button onClick={submitHandler}>Make a new game</button>
       </div>
     );
   } else {
