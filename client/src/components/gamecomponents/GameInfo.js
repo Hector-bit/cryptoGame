@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
-import { connect } from 'readux';
+import { connect } from 'redux';
 // import { sendStats } from "../redux/UserStats/userStatsActions";
 
 const useStyles = makeStyles((theme) => ({
