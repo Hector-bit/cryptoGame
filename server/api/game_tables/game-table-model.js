@@ -32,9 +32,9 @@ function findById(id) {
 function findByInfoID(gamer_id) {
     return db('game_table')
     .where({ gamer_id })
-    .map(dailymeals => {
-        dailymeals = JSON.parse(dailymeals)
-        return dailymeals
+    .map(game_tab => {
+        game_tab = JSON.parse(game_tab)
+        return game_tab
     })
 }
 

@@ -2,7 +2,7 @@ const express = require('express');
 const helmet = require('helmet');
 const cors = require('cors');
 
-const gameRouter = require('./game_tables/user-router');
+const gameRouter = require('./game_tables/game-router');
 const authRouter = require('./auth/auth-router');
 
 const server = express();

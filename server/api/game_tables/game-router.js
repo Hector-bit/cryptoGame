@@ -1,8 +1,8 @@
 const express = require('express');
 const Info = require('./user-model');
-const DailyMeals = require('./game-table-model');
+const game_methods = require('./game-table-model');
 const restricted = require('../auth/restricted');
-const { validateDailyMeals, stringifyMeals, addInfoIdToMeals }  = require('./user-middleware');
+const { validategame_methods, stringifyMeals, addInfoIdToMeals }  = require('./user-middleware');
 
 const router = express.Router();
 
@@ -60,11 +60,10 @@ router.get('/:id', restricted, (req, res) => {
 router.get('/:id/gametable', (req, res) => {
     const id = req.params.id;
     console.log('hello do these work?', req)
-    DailyMeals.findByInfoID(id)
-    console.log('here is id: ', id)
-        .then(dailymeals => {
-            if(dailymeals) {
-                res.status(200).json(dailymeals)
+    game_methods.findByInfoID(id)
+        .then(game_methods => {
+            if(game_methods) {
+                res.status(200).json(game_methods)
             } else {
                 res.status(404).json({ error: 'hopefully this is now searching for the game table but if your seeing this then you fucked up'})
             }
@@ -100,9 +99,9 @@ router.post('/', restricted, (req, res) => {
 router.post('/:id/gametable', restricted, (req, res) => {
     console.log(req, "LOOK HERE")
         const id = req.user.id;
-        DailyMeals.add(req.body, req.params.id)
+        game_methods.add(req.body, req.params.id)
             .then(success => {
-                DailyMeals.add(req.body, id)
+                game_methods.add(req.body, id)
                     .then(saved => {
                         console.log(saved)
                         res.status(201).json(saved)
@@ -143,7 +142,7 @@ router.put('/:id/gametable', restricted, (req, res) => {
     if(!id){
         res.status(400).json({ error: 'you did not provide a valid user id'})
     } else {
-        DailyMeals.updateTable(id, req.body)
+        game_methods.updateTable(id, req.body)
             .then(saved => {
                 res.status(201).json(saved)
             })
